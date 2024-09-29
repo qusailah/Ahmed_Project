@@ -11,11 +11,14 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final box = GetStorage();
+
   int counter = 0;
   @override
   Widget build(BuildContext context) {
-    // box.write('user_name', 'Jalal');
+    // box.write('user_name', 'Ahmed');
     // box.write('user_job', 'Pogrammer');
+    // box.write('user_age', '25');
+    // box.write('user_favorites', 'All clothes');
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -64,7 +67,7 @@ class _ProfileState extends State<Profile> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Text(box.read('user_name'),
+                    Text('${box.read('user_name') ?? "Ahmed"} ',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -73,7 +76,7 @@ class _ProfileState extends State<Profile> {
                       height: 10.0,
                     ),
                     Text(
-                      box.read("user_job"),
+                      box.read("user_job") ?? "free",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -106,7 +109,7 @@ class _ProfileState extends State<Profile> {
                           height: 5.0,
                         ),
                         Text(
-                          "${box.read('user_favorites')}",
+                          "${box.read('user_favorites') ?? "All"} ",
                           style: const TextStyle(
                             fontSize: 15.0,
                           ),
@@ -125,7 +128,7 @@ class _ProfileState extends State<Profile> {
                           height: 5.0,
                         ),
                         Text(
-                          '${box.read('user_age')}',
+                          '${box.read('user_age') ?? 20}',
                           style: const TextStyle(
                             fontSize: 15.0,
                           ),

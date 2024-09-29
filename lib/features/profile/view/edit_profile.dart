@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/base/view/base_view.dart';
 import 'package:ecommerce_app/features/profile/view/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -61,13 +62,13 @@ class _EditProfileState extends State<EditProfile> {
                         box.write('user_job', jobController.text);
                         box.write('user_age', ageController.text);
                         box.write('user_favorites', favoriteController.text);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BaseView(),
+                            ));
                       });
                     }
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Profile(),
-                        ));
                   },
                   child: const Text(
                     'Save',
