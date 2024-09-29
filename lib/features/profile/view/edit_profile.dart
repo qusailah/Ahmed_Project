@@ -55,12 +55,14 @@ class _EditProfileState extends State<EditProfile> {
             Center(
               child: ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      box.write('user_name', nameController.text);
-                      box.write('user_job', jobController.text);
-                      box.write('user_age', ageController.text);
-                      box.write('user_favorites', favoriteController.text);
-                    });
+                    if (formValidation()) {
+                      setState(() {
+                        box.write('user_name', nameController.text);
+                        box.write('user_job', jobController.text);
+                        box.write('user_age', ageController.text);
+                        box.write('user_favorites', favoriteController.text);
+                      });
+                    }
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -79,6 +81,16 @@ class _EditProfileState extends State<EditProfile> {
         ),
       ),
     );
+  }
+
+  bool formValidation() {
+    if (nameController.text.isNotEmpty &&
+        ageController.text.isNotEmpty &&
+        jobController.text.isNotEmpty &&
+        favoriteController.text.isNotEmpty)
+      return true;
+    else
+      return false;
   }
 }
 

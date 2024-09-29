@@ -14,8 +14,8 @@ class _ProfileState extends State<Profile> {
   int counter = 0;
   @override
   Widget build(BuildContext context) {
-    box.write('user_name', 'Jalal');
-    box.write('user_job', 'Pogrammer');
+    // box.write('user_name', 'Jalal');
+    // box.write('user_job', 'Pogrammer');
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -106,7 +106,7 @@ class _ProfileState extends State<Profile> {
                           height: 5.0,
                         ),
                         Text(
-                          "${box.read('favorites')}",
+                          "${box.read('user_favorites')}",
                           style: const TextStyle(
                             fontSize: 15.0,
                           ),
@@ -125,7 +125,7 @@ class _ProfileState extends State<Profile> {
                           height: 5.0,
                         ),
                         Text(
-                          '${box.read('usr_age')}',
+                          '${box.read('user_age')}',
                           style: const TextStyle(
                             fontSize: 15.0,
                           ),
