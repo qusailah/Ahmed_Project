@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/view/bag_view.dart';
 import 'package:ecommerce_app/features/favorites/view/favorites_view.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
+import 'package:ecommerce_app/features/profile/view/profile.dart';
 import 'package:ecommerce_app/features/profile/view/profile_view.dart';
 import 'package:ecommerce_app/features/shop/view/shop_view.dart';
 
@@ -23,7 +24,8 @@ class _BaseViewState extends State<BaseView>
     const ShopView(),
     const BagView(),
     const FavoritesView(),
-    const ProfileView(),
+    // const ProfileView(),
+    Profile(),
   ];
 
   int _selectedIndex = 0;

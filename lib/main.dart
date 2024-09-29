@@ -12,44 +12,44 @@ import 'package:ecommerce_app/features/shop/service/shop_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 
 void main() async {
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
-    DevicePreview(
-      builder: (context) {
-        return EasyLocalization(
-          supportedLocales: LanguageManager.supportedLocales,
-          path: AssetPaths.translationsPath,
-          fallbackLocale: LanguageManager.enLocale,
-          child: BlocProvider(
-            create: (context) => ThemeCubit(),
-            child: BlocBuilder<ThemeCubit, ThemeState>(
-              builder: (context, state) {
-                return MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                      create: (context) => BagBloc()..add(BagInitialized()),
-                    ),
-                    BlocProvider(
-                      create: (context) =>
-                          FavoritesBloc()..add(FavoritesInitialized()),
-                    ),
-                    BlocProvider(
-                      create: (context) => ShopCubit(ShopService()),
-                    ),
-                  ],
-                  child: MyApp(
-                    state: state,
+    DevicePreview(builder: (context) {
+      return EasyLocalization(
+        supportedLocales: LanguageManager.supportedLocales,
+        path: AssetPaths.translationsPath,
+        fallbackLocale: LanguageManager.enLocale,
+        child: BlocProvider(
+          create: (context) => ThemeCubit(),
+          child: BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, state) {
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => BagBloc()..add(BagInitialized()),
                   ),
-                );
-              },
-            ),
+                  BlocProvider(
+                    create: (context) =>
+                        FavoritesBloc()..add(FavoritesInitialized()),
+                  ),
+                  BlocProvider(
+                    create: (context) => ShopCubit(ShopService()),
+                  ),
+                ],
+                child: MyApp(
+                  state: state,
+                ),
+              );
+            },
           ),
-        );
-      }
-    ),
+        ),
+      );
+    }),
   );
 }
 
